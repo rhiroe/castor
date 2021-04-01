@@ -1,5 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+
+class Sample extends React.Component {
+  render() {
+    return (
+      <button className={'button'}>
+        {this.props.text}
+      </button>
+    )
+  }
+}
 
 function App() {
   return (
@@ -18,6 +29,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Sample text={'ボタンだよ'}/>
     </div>
   );
 }
