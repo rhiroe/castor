@@ -1,9 +1,8 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import { IconButton, Tabs, Tab, makeStyles, useTheme } from '@material-ui/core';
+import CachedIcon from '@material-ui/icons/Cached';
 import TabPanel from './tab_panel';
 
 function a11yProps(index) {
@@ -85,6 +84,9 @@ export default function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
+          <IconButton color="primary" aria-label="change">
+            <CachedIcon />
+          </IconButton>
           <Pie options={option} height={200} data={data} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
