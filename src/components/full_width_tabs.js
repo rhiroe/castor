@@ -1,4 +1,5 @@
 import React from 'react';
+import { Pie } from 'react-chartjs-2';
 import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -32,6 +33,17 @@ export default function FullWidthTabs() {
     setValue(index);
   };
 
+  const data = {
+    labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+    datasets: [
+      {
+        label: 'Dataset 1',
+        data: [Math.random(), Math.random(), Math.random(), Math.random(), Math.random()],
+        backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue'],
+      }
+    ]
+  };
+
   return (
     <div className={classes.root}>
       <Tabs
@@ -54,13 +66,19 @@ export default function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          グラフ
+          <Pie height={200} legend={{position: 'bottom'}} data={data} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
+          <Pie height={200} legend={{position: 'bottom'}} data={data} />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
+          <Pie height={200} legend={{position: 'bottom'}} data={data} />
+        </TabPanel>
+        <TabPanel value={value} index={3} dir={theme.direction}>
+          <Pie height={200} legend={{position: 'bottom'}} data={data} />
+        </TabPanel>
+        <TabPanel value={value} index={4} dir={theme.direction}>
+          <Pie height={200} legend={{position: 'bottom'}} data={data} />
         </TabPanel>
       </SwipeableViews>
     </div>
