@@ -33,13 +33,32 @@ export default function FullWidthTabs() {
     setValue(index);
   };
 
+  const option = {
+    legend: {
+      position: 'bottom',
+    },
+    tooltips: {
+      callbacks: {
+        title: (tooltipItem, data) => data['labels'][tooltipItem[0]['index']],
+        label: (tooltipItem, data) => ` ${data['datasets'][0]['data'][tooltipItem['index']].toLocaleString()}円`,
+      }
+    }
+  }
+
   const data = {
-    labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [
       {
         label: 'Dataset 1',
-        data: [Math.random(), Math.random(), Math.random(), Math.random(), Math.random()],
-        backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue'],
+        data: [...Array(6)].map(() => Math.floor(Math.random()*10000)),
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.7)',
+          'rgba(54, 162, 235, 0.7)',
+          'rgba(255, 206, 86, 0.7)',
+          'rgba(75, 192, 192, 0.7)',
+          'rgba(153, 102, 255, 0.7)',
+          'rgba(255, 159, 64, 0.7)'
+        ],
       }
     ]
   };
@@ -66,19 +85,19 @@ export default function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <Pie height={200} legend={{position: 'bottom'}} data={data} />
+          <Pie options={option} height={200} data={data} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <Pie height={200} legend={{position: 'bottom'}} data={data} />
+          <Pie options={option} height={200} data={data} />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          <Pie height={200} legend={{position: 'bottom'}} data={data} />
+          <Pie options={option} height={200} data={data} />
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
-          <Pie height={200} legend={{position: 'bottom'}} data={data} />
+          <Pie options={option} height={200} data={data} />
         </TabPanel>
         <TabPanel value={value} index={4} dir={theme.direction}>
-          <Pie height={200} legend={{position: 'bottom'}} data={data} />
+          <Pie options={option} height={200} data={data} />
         </TabPanel>
       </SwipeableViews>
     </div>
